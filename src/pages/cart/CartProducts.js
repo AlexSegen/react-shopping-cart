@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
+
 import CartItem from './CartItem';
 import styles from './CartProducts.module.scss';
 
 const CartProducts = () => {
+
+    const { cartItems } = useContext(CartContext);
+
     return ( 
         <div className={styles.p__container}>
             <div className="card card-body">
 
-            <CartItem/>
-            <CartItem/>
-            <CartItem/>
-            <CartItem/>
+                {
+                    cartItems.map(product =>  <CartItem key={product.id} product={product}/>)
+                }
 
             </div>
         </div>
