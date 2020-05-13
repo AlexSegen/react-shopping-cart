@@ -6,13 +6,13 @@ import styles from './header.module.scss';
 
 const Header = () => {
 
-    const {totalItems} = useContext(CartContext);
-    
+    const {itemCount} = useContext(CartContext);
+
     return ( 
         <header className={styles.header}>
             <Link to='/'>Store</Link>
             <Link to='/about'>About</Link>
-            <Link to='/cart'> <CartIcon/> Cart ({totalItems})</Link>
+            <Link to='/cart'> <CartIcon/> Cart ({itemCount})</Link>
         </header>
      );
 }

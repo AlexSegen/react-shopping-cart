@@ -1,71 +1,47 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useReducer } from 'react';
+import { CartReducer } from './CartReducer';
+
 export const CartContext = createContext()
 
-// const initialState = { cartItems: [], total: 0, itemCount: 0 };
+const initialState = { cartItems: [], total: 0, itemCount: 0, checkout: false };
 
 const CartContextProvider = ({children}) => {
 
-    const [cartItems, setCartItems] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [totalItems, setTotalItems] = useState(0);
+    const [state, dispatch] = useReducer(CartReducer, initialState)
 
-    const increase = id => {
-        cartItems[cartItems.findIndex(item => item.id === id)].quantity++
-        setCartItems([...cartItems])
+    const increase = payload => {
+        dispatch({type: 'INCREASE', payload})
     }
 
-    const decrease = id => {
-        cartItems[cartItems.findIndex(item => item.id === id)].quantity--
-        setCartItems([...cartItems])
+    const decrease = payload => {
+        dispatch({type: 'DECREASE', payload})
     }
 
-    const isInCart = (product) => {
-        return !!cartItems.find(item => item.id === product.id);
+    const addProduct = payload => {
+        dispatch({type: 'ADD_ITEM', payload})
     }
 
-    const addProduct = product => {
-
-        if (!cartItems.find(item => item.id === product.id)) {
-            setCartItems([
-                ...cartItems,
-                {
-                    ...product,
-                    quantity: 1
-                }
-            ]);
-        } else {
-            increase(product.id)
-        }
+    const removeProduct = payload => {
+        dispatch({type: 'REMOVE_ITEM', payload})
     }
 
-    const removeProduct = product => {
-
-        setCartItems([
-            ...cartItems.filter(item => item.id !== product.id)
-        ])
+    const clearCart = () => {
+        dispatch({type: 'CLEAR'})
     }
 
-    const sumTotal = () => {
-        let totalPrices = cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
-        setTotal(totalPrices);
-
-        let totalQty = cartItems.reduce((total, product) => total + product.quantity, 0);
-        setTotalItems(totalQty);
+    const handleCheckout = () => {
+        console.log('CHECKOUT', state);
+        dispatch({type: 'CHECKOUT'})
     }
-
-    useEffect(() => {
-        sumTotal()
-    }, [cartItems]);
 
     const contextValues = {
-        cartItems,
         removeProduct,
-        total,
-        totalItems,
         addProduct,
         increase,
         decrease,
-        isInCart
+        clearCart,
+        handleCheckout,
+        ...state
     } 
 
     return ( 
