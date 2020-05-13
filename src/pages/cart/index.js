@@ -6,12 +6,12 @@ import { CartContext } from '../../contexts/CartContext';
 
 const Cart = () => {
 
-    const { total, cartItems } = useContext(CartContext);
+    const { total, totalItems, cartItems } = useContext(CartContext);
     
     return ( 
         <Layout title="Cart" description="This is the Cart page" >
             <div >
-                <div className="text-center">
+                <div className="text-center mt-5">
                     <h1>Cart</h1>
                     <p>This is the Cart Page.</p>
                 </div>
@@ -21,15 +21,19 @@ const Cart = () => {
                         {
                             cartItems.length > 0 ?
                             <CartProducts/> :
-                            "Your cart is empty"
+                            <div className="p-3 text-center text-muted">
+                                Your cart is empty
+                            </div>
                         }
                     </div>
                     {
                         cartItems.length > 0 && 
                         <div className="col-sm-3 p-3">
-                            <p>Total</p>
-                            <h4 className="m-0 txt-right">{total}</h4>
-                         </div>
+                            <p className="mb-1">Total Items</p>
+                            <h4 className="m-3 txt-right">{totalItems}</h4>
+                            <p className="mb-1">Total Payment</p>
+                            <h3 className="m-0 txt-right">{total}</h3>
+                        </div>
                     }
                     
                 </div>

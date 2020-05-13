@@ -9,13 +9,15 @@ const ProductsGrid = () => {
 
     return ( 
         <div className={styles.p__container}>
-            <div className={styles.p__toolbar}>
-                <div>
-                    {products.length} Products
+            <div className="row">
+                <div className="col-sm-8">
+                    <div className="py-3">
+                        {products.length} Products
+                    </div>
                 </div>
-                <div>
+                <div className="col-sm-4">
                     <div className="form-group">
-                        <input type="text" name="" className="form-control" id=""/>
+                        <input type="text" name="" placeholder="Search product" className="form-control" id=""/>
                     </div>
                 </div>
             </div>
