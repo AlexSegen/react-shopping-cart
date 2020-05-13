@@ -51,7 +51,7 @@ export const dummyProducts = [
     id: 9,
     name: "Pork - Chop, Frenched",
     price: 199.16,
-    photo: "/img/8.jpg"
+    photo: "/img/9.jpg"
   },
   {
     id: 10,

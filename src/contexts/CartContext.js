@@ -44,10 +44,10 @@ const CartContextProvider = ({children}) => {
     }
 
     const sumTotal = () => {
-        let totalPrices = cartItems.reduce((total, product) => parseInt(total) + parseInt(product.price) * product.quantity, 0).toFixed(2);
+        let totalPrices = cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
         setTotal(totalPrices);
 
-        let totalQty = cartItems.reduce((total, product) => parseInt(total) + product.quantity, 0);
+        let totalQty = cartItems.reduce((total, product) => total + product.quantity, 0);
         setTotalItems(totalQty);
     }
 
