@@ -10,7 +10,7 @@ const CartProducts = () => {
 
     return ( 
         <div className={styles.p__container}>
-            <div className="card card-body">
+            <div className="card card-body border-0">
 
                 {
                     cartItems.map(product =>  <CartItem key={product.id} product={product}/>)

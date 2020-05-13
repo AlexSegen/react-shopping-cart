@@ -3,6 +3,7 @@ import Layout from '../../components/Layout';
 
 import CartProducts from './CartProducts';
 import { CartContext } from '../../contexts/CartContext';
+import { formatNumber } from '../../helpers/utils';
 
 const Cart = () => {
 
@@ -29,10 +30,14 @@ const Cart = () => {
                     {
                         cartItems.length > 0 && 
                         <div className="col-sm-3 p-3">
-                            <p className="mb-1">Total Items</p>
-                            <h4 className="m-3 txt-right">{totalItems}</h4>
-                            <p className="mb-1">Total Payment</p>
-                            <h3 className="m-0 txt-right">{total}</h3>
+                            <div className="card card-body">
+                                <p className="mb-1">Total Items</p>
+                                <h4 className=" mb-3 txt-right">{totalItems}</h4>
+                                <p className="mb-1">Total Payment</p>
+                                <h3 className="m-0 txt-right">{formatNumber(total)}</h3>
+                                <hr className="my-2"/>
+                                <button type="button" className="btn btn-primary">CHECKOUT</button>
+                            </div>
                         </div>
                     }
                     
