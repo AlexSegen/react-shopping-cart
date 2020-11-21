@@ -18,20 +18,20 @@ const ProductItem = ({product}) => {
             <p>{product.name}</p>
             <h3 className="text-left">{formatNumber(product.price)}</h3>
             <div className="text-right">
-                <Link  to="/" className="btn btn-link btn-sm mr-2">Details</Link>
+                <Link  to="/" className="btn btn-link btn-sm mr-2">Detaylar</Link>
 
                 {
                     isInCart(product) && 
                     <button 
                     onClick={() => increase(product)}
-                    className="btn btn-outline-primary btn-sm">Add more</button>
+                    className="btn btn-outline-primary btn-sm">Daha fazla ekle</button>
                 }
 
                 {
                     !isInCart(product) && 
                     <button 
                     onClick={() => addProduct(product)}
-                    className="btn btn-primary btn-sm">Add to cart</button>
+                    className="btn btn-primary btn-sm">Sepete Ekle</button>
                 }
                 
             </div>

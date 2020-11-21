@@ -12,12 +12,12 @@ const ProductsGrid = () => {
             <div className="row">
                 <div className="col-sm-8">
                     <div className="py-3">
-                        {products.length} Products
+                       Toplam {products.length} Ürün
                     </div>
                 </div>
                 <div className="col-sm-4">
                     <div className="form-group">
-                        <input type="text" name="" placeholder="Search product" className="form-control" id=""/>
+                        <input type="text" name="" placeholder="Ürün ara" className="form-control" id=""/>
                     </div>
                 </div>
             </div>

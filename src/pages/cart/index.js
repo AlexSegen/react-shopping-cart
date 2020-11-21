@@ -14,8 +14,8 @@ const Cart = () => {
         <Layout title="Cart" description="This is the Cart page" >
             <div >
                 <div className="text-center mt-5">
-                    <h1>Cart</h1>
-                    <p>This is the Cart Page.</p>
+                    <h1>Sepet</h1>
+                    <p>Ürünlerimizi kurulum ve eğitimlerini vererek teslim ediyoruz.</p>
                 </div>
 
                 <div className="row no-gutters justify-content-center">
@@ -24,14 +24,14 @@ const Cart = () => {
                             cartItems.length > 0 ?
                             <CartProducts/> :
                             <div className="p-3 text-center text-muted">
-                                Your cart is empty
+                                Sepetiniz Boş.
                             </div>
                         }
 
                         { checkout && 
                             <div className="p-3 text-center text-success">
-                                <p>Checkout successfull</p>
-                                <Link to="/" className="btn btn-outline-success btn-sm">BUY MORE</Link>
+                                <p>Başarılı</p>
+                                <Link to="/" className="btn btn-outline-success btn-sm">DAHA FAZLA SATINAL</Link>
                             </div>
                         }
                     </div>
@@ -39,14 +39,14 @@ const Cart = () => {
                         cartItems.length > 0 && 
                         <div className="col-sm-3 p-3">
                             <div className="card card-body">
-                                <p className="mb-1">Total Items</p>
+                                <p className="mb-1">Tüm Ürünler</p>
                                 <h4 className=" mb-3 txt-right">{itemCount}</h4>
-                                <p className="mb-1">Total Payment</p>
+                                <p className="mb-1">Toplam Tutar</p>
                                 <h3 className="m-0 txt-right">{formatNumber(total)}</h3>
                                 <hr className="my-4"/>
                                 <div className="text-center">
-                                    <button type="button" className="btn btn-primary mb-2" onClick={handleCheckout}>CHECKOUT</button>
-                                    <button type="button" className="btn btn-outlineprimary btn-sm" onClick={clearCart}>CLEAR</button>
+                                    <button type="button" className="btn btn-primary mb-2" onClick={handleCheckout}>TAMAMLA</button>
+                                    <button type="button" className="btn btn-outlineprimary btn-sm" onClick={clearCart}>TEMİZLE</button>
                                 </div>
 
                             </div>
