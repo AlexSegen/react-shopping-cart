@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
+
 import ProductItem from './ProductItem';
-import { ProductsContext } from '../../contexts/ProductsContext';
 import styles from './ProductsGrid.module.scss';
+import { useProducts } from '../../hooks/useProducts';
 
 const ProductsGrid = () => {
 
-    const { products} = useContext(ProductsContext)
+    const { products } = useProducts()
 
     return ( 
         <div className={styles.p__container}>

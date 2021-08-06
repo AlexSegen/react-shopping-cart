@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../contexts/CartContext';
+
+import { useCart } from '../../hooks/useCart';
 import { formatNumber } from '../../helpers/utils';
 
 const ProductItem = ({product}) => {
 
-    const { addProduct, cartItems, increase } = useContext(CartContext);
+    const { addProduct, cartItems, increase } = useCart();
 
     const isInCart = product => {
         return !!cartItems.find(item => item.id === product.id);

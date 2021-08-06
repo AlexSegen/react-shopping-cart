@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../components/icons'
-import { CartContext } from '../../contexts/CartContext';
+import React from 'react';
 
+import { useCart } from '../../hooks/useCart';
 import { formatNumber } from '../../helpers/utils';
+import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../components/icons';
 
 const CartItem = ({product}) => {
 
-    const { increase, decrease, removeProduct } = useContext(CartContext);
+    const { increase, decrease, removeProduct } = useCart();
 
     return ( 
         <div className="row no-gutters py-2">
