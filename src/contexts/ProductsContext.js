@@ -1,16 +1,26 @@
-import React, { createContext, useState } from 'react';
-import { dummyProducts } from '../services/dummy';
+import React, { createContext, useEffect, useState } from 'react'
+import { dummyProducts } from '../services/dummy'
 export const ProductsContext = createContext()
 
-const ProductsContextProvider = ({children}) => {
+const ProductsContextProvider = ({ children }) => {
+  const [products] = useState(dummyProducts)
+  const [filteredProducts, setFilteredProducts] = useState([])
 
-    const [products] = useState(dummyProducts);
+  const searchProduct = (name) => {
+    const filteredProducts = products.filter((product) =>
+      product.name.toLowerCase().includes(name.toLowerCase())
+    )
+    setFilteredProducts(filteredProducts)
+  }
+  useEffect(() => {
+    setFilteredProducts(dummyProducts)
+  }, [])
 
-    return ( 
-        <ProductsContext.Provider value={{products}} >
-            { children }
-        </ProductsContext.Provider>
-     );
+  return (
+    <ProductsContext.Provider value={{ filteredProducts, searchProduct }}>
+      {children}
+    </ProductsContext.Provider>
+  )
 }
- 
-export default ProductsContextProvider;
+
+export default ProductsContextProvider
