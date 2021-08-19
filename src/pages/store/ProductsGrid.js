@@ -25,6 +25,7 @@ const ProductsGrid = () => {
               id=''
             />{' '}
           </div>
+
         </div>
       </div>
       <div className={styles.p__grid}>
