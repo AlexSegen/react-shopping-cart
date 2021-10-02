@@ -28,7 +28,7 @@ const ProductsGrid = () => {
 
                 {
                     products.filter((val)=>{
-                        if(searchItem==""){
+                        if(searchItem === ""){
                             return val
                         } else if(val.name.toLowerCase().includes(searchItem.toLocaleLowerCase())){
                             return val
